@@ -21,9 +21,21 @@ const deleteUserById = async (userId) => {
     return await User.deleteOne({ user_id: userId });
 };
 
+// Function to search user by username
+const searchUserByUsername = async (username) => {
+    return await User.find({ username: new RegExp(username, 'i') }); // Case-insensitive search
+};
+
+// Function to update a user by user_id
+const updateUserById = async (userId, updatedData) => {
+    return await User.findOneAndUpdate({ user_id: userId }, updatedData, { new: true });
+};
+
 module.exports = {
     addUser,
     getUserByUserId,
     getAllUsers,
-    deleteUserById
+    deleteUserById,
+    searchUserByUsername,
+    updateUserById
 };

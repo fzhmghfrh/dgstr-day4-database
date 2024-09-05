@@ -40,10 +40,16 @@ const deleteUser = async (userId) => {
     return await userRepository.deleteUserById(userId);
 };
 
+// Function to search users by name
+const searchUser = async (username) => {
+    return await userRepository.searchUserByUsername(username);
+};
+
 module.exports = {
     createUser,
     getUser,
     getAllUsers,
     updateUser,
-    deleteUser
+    deleteUser,
+    searchUser
 };

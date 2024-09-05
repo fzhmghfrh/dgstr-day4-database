@@ -59,15 +59,19 @@ const deleteUser = async (req, res) => {
     }
 };
 
+
 const searchUser = async (req, res) => {
     try {
-        const users = await User.find({ username: { $regex: req.query.name, $options: 'i' } });
-        res.status(200).json(users);
+        const users = await userUsecase.searchUser(req.query.username);
+        if (users.length > 0) {
+            res.status(200).json(users);
+        } else {
+            res.status(404).json({ message: 'No users found' });
+        }
     } catch (error) {
-        res.status(500).json({ message: 'Error searching users', error });
+        res.status(500).json({ message: 'Error searching for users', error });
     }
 };
-
 
 module.exports = {
     getAllUsers,

@@ -7,6 +7,6 @@ router.get('/:id', userHandlers.getUser);
 router.post('/', userHandlers.createUser);
 router.put('/:id', userHandlers.updateUser);
 router.delete('/:id', userHandlers.deleteUser);
-router.get('/name/search', userHandlers.searchUser);
+router.get('/username/search', userHandlers.searchUser);
 
 module.exports = router;
